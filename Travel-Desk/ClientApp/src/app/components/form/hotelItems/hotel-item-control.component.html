@@ -1,0 +1,37 @@
+
+<div class="form-group hotelOptions" [formGroup]="hotelItem">
+
+
+    <mat-form-field>
+        <input matInput placeholder="Hotel Name" formControlName="hotelName" [attr.id]="'hotelName'+index" required>
+        <mat-error *ngIf="hotelItem.get('hotelName').hasError('required')">
+            Hotel name is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Location" formControlName="location" [attr.id]="'location'+index" required>
+        <mat-error *ngIf="hotelItem.get('location').hasError('required')">
+            Location is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Website" formControlName="website" [attr.id]="'website'+index">
+        <mat-error *ngIf="hotelItem.get('website').hasError('required')">
+            Website is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="MobileNo" formControlName="mobileno" [attr.id]="'mobileno'+index" required>
+        <mat-error *ngIf="hotelItem.get('mobileno').hasError('required')">
+            Mobile number is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+    <button mat-icon-button type="button" color="primary" (click)="removed.emit(index)">
+        <mat-icon>remove_circle</mat-icon>
+    </button>
+    <button mat-icon-button type="button" color="primary" (click)="add.emit(index)">
+        <mat-icon>add_circle</mat-icon>
+    </button>
+
+
+</div>

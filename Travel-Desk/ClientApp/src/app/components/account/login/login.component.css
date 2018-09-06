@@ -1,0 +1,113 @@
+.loginlayout {
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(#40404b, #111118) rgba(34,34,40,0.94);
+}
+.login-form {
+    width: 500px;
+    height: 500px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin: -250px 0 0 -250px;
+}
+
+.example-card {
+    margin: 0 auto;
+    width: 400px;
+    height:400px;
+    
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    
+}
+
+
+
+    .login-container > * {
+        width: 100%;
+        
+        font-size: large;
+        padding-top: 20px;
+        
+    }
+
+.login-action-container {
+    display: flex;
+    flex-direction: row;
+    margin: -25px 65px 0 65px;
+   
+}
+
+.line-with-icon {
+    align-self: center;
+    margin: 10px 0 0 110px;
+    color: navy;
+}
+
+.login-logo-container {
+    display: flex;
+    margin: 90px 0 0 90px;
+    align-content: center;
+    align-self: center;
+    height: 25%;
+    width: 50%;
+    object-fit: contain;
+}
+
+.login-action-container > * {
+    width: 100%;
+    
+}
+
+mat-card-content {
+    background-color: white;
+    margin-left: -24px;
+    margin-right: -24px;
+}
+
+mat-card-actions {
+    
+    margin-top:10px;
+}
+
+
+.material-icons.md-18 {
+    font-size: 18px;
+}
+
+.material-icons.md-24 {
+    font-size: 24px;
+}
+
+.material-icons.md-36 {
+    font-size: 36px;
+}
+
+.material-icons.md-48 {
+    font-size: 48px;
+}
+
+mat-card-header {
+    margin: 0 auto;
+    width: 60px;
+    
+}
+
+/* Rules for using icons as white on a dark background. */
+.material-icons.md-light {
+    color: rgba(255, 255, 255, 1);
+}
+
+.material-icons.md-light.md-inactive {
+        color: rgba(255, 255, 255, 0.3);
+    }

@@ -1,0 +1,62 @@
+
+<div class="example-header">
+    <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+    
+</div>
+
+<div class="example-container mat-elevation-z8">
+
+  <mat-table [dataSource]="dataSource" matSort>
+    <!-- ID Column -->
+    <ng-container matColumnDef="reimbursementInfoId">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Reimbursement Id </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.reimbursementInfoId}} </mat-cell>
+    </ng-container>
+    <!-- Progress Column -->
+    <ng-container matColumnDef="projectCode">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> ProjectCode </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.projectCode}} </mat-cell>
+    </ng-container>
+    <!-- Name Column -->
+    <ng-container matColumnDef="employeeId">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Country </mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.employeeId}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="employeeName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Employee Id </mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.employeeName}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="purposeofTravel">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Employee Name </mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.purposeofTravel}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="locationofTravel">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Travel Date </mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.locationofTravel}} </mat-cell>
+    </ng-container>
+    <!-- Name Column -->
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Actions </mat-header-cell>
+      <mat-cell *matCellDef="let row" (click)="$event.stopPropagation()">
+        <button mat-icon-button (click)="openReimbursementDialog(row.reimbursementInfoId)" color="primary">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button *ngIf="row.requestStatus!='Approved'" (click)="approve(row.reimbursementInfoId)" style="color:greenyellow">
+          <mat-icon>check</mat-icon>
+        </button>
+        <button mat-icon-button *ngIf="row.requestStatus!='Declined'" (click)="decline(row.reimbursementInfoId)" color="accent">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;">
+    </mat-row>
+  </mat-table>
+          
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>

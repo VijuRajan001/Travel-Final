@@ -1,0 +1,6 @@
+ 
+
+
+    <travelExpensesWithoutVoucher-item-control *ngFor="let travelExpensesWithoutVoucherItem of travelExpensesWithoutVoucherItemsFormArray.controls; let i=index"
+                         [index]="i" [travelExpensesWithoutVoucherItem]="travelExpensesWithoutVoucherItem" (removed)="travelExpensesWithoutVoucherItemsFormArray.removeAt($event)" (add)="addItem($event)">
+    </travelExpensesWithoutVoucher-item-control>

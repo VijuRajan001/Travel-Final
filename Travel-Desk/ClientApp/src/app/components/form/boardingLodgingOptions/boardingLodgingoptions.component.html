@@ -1,0 +1,6 @@
+ 
+
+
+    <boardingLodging-item-control *ngFor="let boardingLodgingItem of boardingLodgingItemsFormArray.controls; let i=index"
+                         [index]="i" [boardingLodgingItem]="boardingLodgingItem" (removed)="boardingLodgingItemsFormArray.removeAt($event)" (add)="addItem($event)">
+    </boardingLodging-item-control>

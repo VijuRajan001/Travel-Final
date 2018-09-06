@@ -1,0 +1,265 @@
+<div mat-dialog-content>
+  <mat-tab-group #tabGroup (selectedIndexChange)="resetExpansionPanel($event)" [selectedIndex]="step">
+    <mat-tab label="Add Request" class="flex-expand">
+      <form [formGroup]="TravelDataForm" (ngSubmit)="onSubmit()" class="tab-form">
+        <div class="form-content">
+          <!--<mat-form-field>
+            <input matInput placeholder="Project Code" formControlName="project_code" [errorStateMatcher]="matcher">
+            <mat-error *ngIf="TravelDataForm.get('project_code').hasError('required')">
+              Project Code is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>-->
+
+          <mat-form-field>
+            <mat-select matInput placeholder="Project Code" formControlName="project_code">
+              <mat-option *ngFor="let projectcode of currentUser.projects" [value]="projectcode.value">
+                {{ projectcode.description }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Employee Name" formControlName="employeeName">
+            <mat-error *ngIf="TravelDataForm.get('employeeName').hasError('required')">
+              Employee Name is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Employee Id" formControlName="employeeId">
+            <mat-error *ngIf="TravelDataForm.get('employeeId').hasError('required')">
+              Employee Id is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <!--<mat-form-field>
+            <input matInput [max]="maxDate" placeholder="Date of Birth" class="datecontrol" [matDatepicker]="dob" (focus)="dob.open()" readonly formControlName="dob">
+            <mat-datepicker-toggle matSuffix [for]="dob"></mat-datepicker-toggle>
+            <mat-datepicker #dob></mat-datepicker>
+            <mat-error *ngIf="TravelDataForm.get('dob').hasError('required')">
+              Date of birth is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>-->
+          <!--<mat-form-field>
+            <input matInput placeholder="Country" formControlName="country">
+            <mat-error *ngIf="TravelDataForm.get('country').hasError('required')">
+              Country is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>-->
+
+          <mat-form-field>
+            <mat-select matInput placeholder="Country" formControlName="country">
+              <mat-option *ngFor="let countrycode of countryList" [value]="countrycode.value">
+                {{ countrycode.description }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput [min]="minDate1" placeholder="Travel Date" class="datecontrol" [matDatepicker]="travel_date" (focus)="travel_date.open()" readonly formControlName="travelDate">
+            <mat-datepicker-toggle matSuffix [for]="travel_date"></mat-datepicker-toggle>
+            <mat-datepicker #travel_date></mat-datepicker>
+            <mat-error *ngIf="TravelDataForm.get('travelDate').hasError('required')">
+              Travel date is <strong>required</strong>
+            </mat-error>
+
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput [min]="mindate" placeholder="Return Date" [matDatepicker]="return_date" (focus)="return_date.open()" readonly formControlName="returnDate">
+            <mat-datepicker-toggle matSuffix [for]="return_date"></mat-datepicker-toggle>
+            <mat-datepicker #return_date></mat-datepicker>
+            <mat-error *ngIf="TravelDataForm.get('returnDate').hasError('required')">
+              Return date is <strong>required</strong>
+            </mat-error>
+
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-select matInput placeholder="status" formControlName="requestStatus">
+              <mat-option *ngFor="let status of statusList" [value]="status.value">
+                {{ status.viewValue }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+        </div>
+        <div class="alert alert-danger" *ngIf="TravelDataForm.controls['travelDate'].value > TravelDataForm.controls['returnDate'].value &&TravelDataForm.controls['returnDate'].value!=null && TravelDataForm.controls['travelDate'].value!=null">
+          Return date should be greater than or equal to Travel date
+        </div>
+
+        <div class="spacer">
+          <mat-divider></mat-divider>
+          <mat-action-row>
+
+            <button mat-button color="primary" type="submit" (click)="submitActions=action.createUpdateRequest">Submit Request</button>            
+            <button mat-button color="primary" (click)="nextStep()">Next</button>
+
+          </mat-action-row>
+        </div>
+
+      </form>
+
+    </mat-tab>
+
+    <mat-tab label="Flight Options" [disabled]="mode===0">
+      <form [formGroup]="FlightOptionsForm" (ngSubmit)="onSubmit()" class="tab-form">
+        <div class="form-content">
+          <mat-accordion>
+            <mat-expansion-panel [expanded]="step === 0">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Onward Journey
+                </mat-panel-title>
+                <mat-panel-description>
+
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <flight-items-array formArrayName="onwardFlightItems"
+                                  [itemsFormArray]="FlightOptionsForm.get('onwardFlightItems')">
+              </flight-items-array>
+            </mat-expansion-panel>
+            <mat-expansion-panel [expanded]="step === 1">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Return Journey
+                </mat-panel-title>
+                <mat-panel-description>
+
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <flight-items-array formArrayName="returnFlightItems"
+                                  [itemsFormArray]="FlightOptionsForm.get('returnFlightItems')">
+              </flight-items-array>
+
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+        <div class="spacer">
+          <mat-divider></mat-divider>
+          <mat-action-row>
+            <button mat-button color="primary" type="submit" (click)="submitActions=action.createFlightOptions">Save</button>
+            <button mat-button color="primary" (click)="prevStep()">Previous</button>
+            <button mat-button color="primary" (click)="nextStep()">Next</button>
+
+          </mat-action-row>
+        </div>
+      </form>
+    </mat-tab>
+    <mat-tab label="Hotel Options" [disabled]="mode===0">
+      <form [formGroup]="HotelOptionsForm" (ngSubmit)="onSubmit()">
+        <div class="form-content">
+          <hotel-items-array formArrayName="hotelItems"
+                             [hotelItemsFormArray]="HotelOptionsForm.get('hotelItems')">
+          </hotel-items-array>
+        </div>
+
+        <div class="spacer">
+          <mat-divider></mat-divider>
+          <mat-action-row>
+            <button mat-button color="primary" type="submit" (click)="submitActions=action.createHotelOptions">Save</button>
+            <button mat-button color="primary" (click)="prevStep()">Previous</button>
+            <button mat-button color="primary" (click)="nextStep()">Next</button>
+
+          </mat-action-row>
+        </div>
+      </form>
+    </mat-tab>
+    <mat-tab label="Passport Info" [disabled]="mode===0">
+      <form [formGroup]="PassportForm" (ngSubmit)="onSubmit()" class="tab-form">
+        <div class="form-content">
+          <mat-form-field>
+            <input matInput placeholder="Passport Number" formControlName="passportNum" [errorStateMatcher]="matcher">
+            <mat-error *ngIf="PassportForm.get('passportNum').hasError('required')">
+              Passport Number <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="Passport Expiry Date" class="datecontrol" [matDatepicker]="passport_Expiry_Date" (focus)="passport_Expiry_Date.open()" readonly formControlName="passportExpiryDate">
+            <mat-datepicker-toggle matSuffix [for]="passport_Expiry_Date"></mat-datepicker-toggle>
+            <mat-datepicker #passport_Expiry_Date></mat-datepicker>
+            <mat-error *ngIf="PassportForm.get('passportExpiryDate').hasError('required')">
+              Passport expiry date is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+
+
+
+          <mat-form-field>
+            <input matInput placeholder="Visa Num" formControlName="visaNum">
+            <mat-error *ngIf="PassportForm.get('visaNum').hasError('required')">
+              Visa Number <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+
+
+          <mat-form-field>
+            <input matInput placeholder="Visa Expiry Date" class="datecontrol" [matDatepicker]="visa_expiry_date" (focus)="visa_expiry_date.open()" readonly formControlName="visaExpiryDate">
+            <mat-icon class="small">date_range</mat-icon>
+            <mat-error *ngIf="PassportForm.get('visaExpiryDate').hasError('required')">
+              Visa expiry date is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <mat-datepicker #visa_expiry_date></mat-datepicker>
+
+
+        </div>
+        <div class="alert alert-danger" *ngIf="TravelDataForm.controls['travelDate'].value > PassportForm.controls['passportExpiryDate'].value && PassportForm.controls['passportExpiryDate'].value!=null ">
+          Passport expiry date should be greater than Travel date
+        </div>
+        <div class="alert alert-danger" *ngIf="TravelDataForm.controls['travelDate'].value > PassportForm.controls['visaExpiryDate'].value && PassportForm.controls['visaExpiryDate'].value!=null">
+          Visa expiry date should be greater than Travel date
+        </div>
+        <div class="spacer">
+          <mat-divider></mat-divider>
+          <mat-action-row>
+            <button mat-button color="primary" type="submit" (click)="submitActions=action.createPassport">Save</button>
+            <button mat-button color="primary" (click)="prevStep()">Previous</button>
+            <button mat-button color="primary" (click)="nextStep()">Next</button>
+
+
+          </mat-action-row>
+        </div>
+
+      </form>
+    </mat-tab>
+    <mat-tab label="Forex Info" [disabled]="mode===0">
+      <form [formGroup]="ForexForm" (ngSubmit)="onSubmit()" class="tab-form">
+        <div class="form-content">
+          <mat-form-field>
+            <input matInput placeholder="Card Number" formControlName="cardNumber">
+            <mat-error *ngIf="ForexForm.get('cardNumber').hasError('required')">
+              Card Number is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Card Type" formControlName="cardType">
+            <mat-error *ngIf="ForexForm.get('cardType').hasError('required')">
+              Card Type is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <input matInput placeholder="Card Expiry Date" class="datecontrol" [matDatepicker]="card_expiry_date" (focus)="card_expiry_date.open()" readonly formControlName="cardExpiryDate">
+            <mat-icon class="small">date_range</mat-icon>
+            <mat-error *ngIf="ForexForm.get('cardExpiryDate').hasError('required')">
+              Card expiry date is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <mat-datepicker #card_expiry_date></mat-datepicker>
+
+        </div>
+        <div class="spacer">
+          <mat-divider></mat-divider>
+          <mat-action-row>
+            <button mat-button color="primary" type="submit" (click)="submitActions=action.createForex">Save</button>
+            <button mat-button color="primary" (click)="prevStep()">Previous</button>
+
+          </mat-action-row>
+        </div>
+      </form>
+    </mat-tab>
+
+  </mat-tab-group>
+
+
+
+</div>
+

@@ -1,0 +1,57 @@
+
+<div class="form-group boardingLodgingOptions flex-grid " [formGroup]="boardingLodgingItem">
+
+  <div class="col2">
+    <mat-form-field>
+        <input matInput placeholder="Place of Stay" formControlName="placeofStay" [attr.id]="'placeofStay'+index" required>
+        <mat-error *ngIf="boardingLodgingItem.get('placeofStay').hasError('required')">
+            Hotel name is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput [max]="maxDate" placeholder="Date From" class="datecontrol" [matDatepicker]="from_date" (focus)="from_date.open()" readonly formControlName="fromDate">
+       
+        <mat-error *ngIf="boardingLodgingItem.get('fromDate').hasError('required')">
+            Date of Arrival is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+    <mat-datepicker #from_date></mat-datepicker>
+    <mat-form-field>
+        <input matInput [max]="maxDate" placeholder="Date to" class="datecontrol" [matDatepicker]="todate" (focus)="todate.open()" readonly formControlName="toDate">
+        
+        <mat-error *ngIf="boardingLodgingItem.get('toDate').hasError('required')">
+            Date of Arrival is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+    <mat-datepicker #todate></mat-datepicker>
+    <mat-form-field>
+        <input matInput placeholder="Currency" formControlName="currency" [attr.id]="'currency'+index" required>
+        <mat-error *ngIf="boardingLodgingItem.get('currency').hasError('required')">
+            Mobile number is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Amount Spent" formControlName="amountSpent" [attr.id]="'amountSpent'+index" required>
+        <mat-error *ngIf="boardingLodgingItem.get('amountSpent').hasError('required')">
+            Mobile number is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+    
+    <mat-form-field>
+        <input matInput placeholder="Remarks" formControlName="remarks" [attr.id]="'remarks'+index" required>
+        <mat-error *ngIf="boardingLodgingItem.get('remarks').hasError('required')">
+            Mobile number is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+    </div>
+    <mat-divider [vertical]="true"></mat-divider>
+    <div class="col1">
+        <button mat-icon-button type="button" color="primary" (click)="removed.emit(index)">
+            <mat-icon>remove_circle</mat-icon>
+        </button>
+        <button mat-icon-button type="button" color="primary" (click)="add.emit(index)">
+            <mat-icon>add_circle</mat-icon>
+        </button>
+
+    </div>
+</div>

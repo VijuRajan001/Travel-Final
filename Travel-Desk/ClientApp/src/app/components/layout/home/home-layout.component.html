@@ -1,0 +1,50 @@
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches" layout="row" layout-align="center center">
+  <mat-toolbar color="primary" class="mat-elevation-z4 example-toolbar">
+
+    <mat-icon svgIcon="nous-logo" class="example-logo-container"></mat-icon><h1 class="example-app-name">Travel Desk</h1>
+    <span class="example-fill-remaining-space"></span>
+    <button mat-button [matMenuTriggerFor]="dashboard" class="example-buttons">
+      <mat-icon>dashboard</mat-icon><span>Dashboard<mat-icon style="vertical-align:middle">keyboard_arrow_down</mat-icon></span>
+    </button>
+    <button mat-button class="example-buttons" (click)="openRequestDialog();"><mat-icon>add_box</mat-icon><span>Request</span></button>
+    <button mat-button class="example-buttons" (click)="openReimbursementDialog();"><mat-icon>add_box</mat-icon><span>Reimbursement</span></button>
+    <button mat-button [matMenuTriggerFor]="menu" class="example-buttons-icon">
+
+      <mat-icon>person</mat-icon>
+
+
+
+    </button>
+
+
+    <mat-menu [overlapTrigger]="false" x-position="after" y-position="below" #menu="matMenu">
+
+
+      <button mat-menu-item class="example-buttons" (click)="signout();">
+
+        <mat-icon>
+          exit_to_app
+        </mat-icon>
+        <span>Sign Out</span>
+      </button>
+
+    </mat-menu>
+    <mat-menu [overlapTrigger]="false" x-position="after" y-position="below" #dashboard="matMenu">
+
+      
+        <button mat-menu-item class="example-buttons" [routerLink]="['/home']">
+          <span>Request</span>
+        </button>
+      
+      
+        <button mat-menu-item class="example-buttons" [routerLink]="['/reimbursement']">
+          <span>Reimbursement</span>
+        </button>
+      
+
+    </mat-menu>
+  </mat-toolbar>
+
+    <router-outlet></router-outlet>
+    
+</div>

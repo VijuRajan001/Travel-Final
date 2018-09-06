@@ -1,0 +1,6 @@
+ 
+
+
+    <fare-item-control *ngFor="let fareItem of fareItemsFormArray.controls; let i=index"
+                         [index]="i" [fareItem]="fareItem" (removed)="fareItemsFormArray.removeAt($event)" (add)="addItem($event)">
+    </fare-item-control>

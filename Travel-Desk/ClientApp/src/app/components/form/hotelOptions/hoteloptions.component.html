@@ -1,0 +1,6 @@
+ 
+
+
+    <hotel-item-control *ngFor="let hotelItem of hotelItemsFormArray.controls; let i=index"
+                         [index]="i" [hotelItem]="hotelItem" (removed)="hotelItemsFormArray.removeAt($event)" (add)="addItem($event)">
+    </hotel-item-control>

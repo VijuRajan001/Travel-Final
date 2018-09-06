@@ -1,0 +1,70 @@
+
+<div class="example-header">
+    <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+    
+</div>
+
+<div class="example-container mat-elevation-z8">
+  <div class="spinner-container" *ngIf="dataSource.loading$ | async">
+    <mat-spinner></mat-spinner>
+  </div>
+
+  <mat-table [dataSource]="dataSource" matSort>
+    <!-- ID Column -->
+    <ng-container matColumnDef="requestId">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> RequestId </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.requestId}} </mat-cell>
+    </ng-container>
+    <!-- Progress Column -->
+    <ng-container matColumnDef="project_Code">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> ProjectCode </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.project_Code}} </mat-cell>
+    </ng-container>
+    <!-- Name Column -->
+    <ng-container matColumnDef="country">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Country </mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.country}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="employeeId">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Employee Id </mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.employeeId}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="employeeName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Employee Name </mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.employeeName}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="travelDate">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Travel Date </mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.travelDate | date: 'dd/MM/yyyy'}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="returnDate">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Return Date </mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.returnDate | date: 'dd/MM/yyyy'}} </mat-cell>
+    </ng-container>
+    <!-- Name Column -->
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Actions </mat-header-cell>
+      <mat-cell *matCellDef="let row" (click)="$event.stopPropagation()">
+        <button mat-icon-button (click)="openRequestDialog(row.requestId)" color="primary">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button *ngIf="this.approle.SBU == this.userrole.roleName" (click)="approve(row.requestId)" style="color:green">
+          <mat-icon>check_circle_outline</mat-icon>
+        </button>
+        <button mat-icon-button *ngIf="this.approle.SBU == this.userrole.roleName" (click)="decline(row.requestId)" style="color:maroon">
+          <mat-icon>cancel_presentation</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;">
+    </mat-row>
+  </mat-table>
+
+  <mat-paginator #paginator [length]="dataSource.requestLength" [pageSize]="3"
+                   [pageSizeOptions]="[3, 5, 10]"></mat-paginator>
+</div>

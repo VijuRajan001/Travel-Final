@@ -1,0 +1,6 @@
+ 
+
+
+    <perDiem-item-control *ngFor="let perDiemItem of perDiemItemsFormArray.controls; let i=index"
+                         [index]="i" [perDiemItem]="perDiemItem" (removed)="perDiemItemsFormArray.removeAt($event)" (add)="addItem($event)">
+    </perDiem-item-control>

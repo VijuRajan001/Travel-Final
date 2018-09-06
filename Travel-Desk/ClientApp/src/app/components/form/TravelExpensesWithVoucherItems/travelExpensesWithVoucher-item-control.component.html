@@ -1,0 +1,57 @@
+
+<div class="form-group travelExpensesWithVoucherOptions" [formGroup]="travelExpensesWithVoucherItem">
+
+
+    <mat-form-field>
+        <input matInput [max]="maxDate" placeholder="Date" class="datecontrol" [matDatepicker]="date" (focus)="date.open()" readonly formControlName="date">
+        <mat-icon class="small">date_range</mat-icon>
+        <mat-error *ngIf="travelExpensesWithVoucherItem.get('date').hasError('required')">
+            Date of Arrival is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+    <mat-datepicker #date></mat-datepicker>
+    <mat-form-field>
+        <input matInput placeholder="From" formControlName="from" [attr.id]="'from'+index" required>
+        <mat-error *ngIf="travelExpensesWithVoucherItem.get('from').hasError('required')">
+            Location is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="To" formControlName="to" [attr.id]="'to'+index">
+        <mat-error *ngIf="travelExpensesWithVoucherItem.get('to').hasError('required')">
+            Website is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Mode Of Conveyance" formControlName="modeOfConveyance" [attr.id]="'modeOfConveyance'+index" required>
+        <mat-error *ngIf="travelExpensesWithVoucherItem.get('modeOfConveyance').hasError('required')">
+            Mobile number is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Currency" formControlName="currency" [attr.id]="'currency'+index" required>
+        <mat-error *ngIf="travelExpensesWithVoucherItem.get('currency').hasError('required')">
+            Mobile number is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Amount Spent" formControlName="amountSpent" [attr.id]="'amountSpent'+index" required>
+        <mat-error *ngIf="travelExpensesWithVoucherItem.get('amountSpent').hasError('required')">
+            Mobile number is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Remarks" formControlName="remarks" [attr.id]="'remarks'+index" required>
+        <mat-error *ngIf="travelExpensesWithVoucherItem.get('remarks').hasError('required')">
+            Mobile number is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+    <button mat-icon-button type="button" color="primary" (click)="removed.emit(index)">
+        <mat-icon>remove_circle</mat-icon>
+    </button>
+    <button mat-icon-button type="button" color="primary" (click)="add.emit(index)">
+        <mat-icon>add_circle</mat-icon>
+    </button>
+
+
+</div>

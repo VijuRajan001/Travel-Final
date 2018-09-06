@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2005
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TravelDesk", "TravelDesk.csproj", "{D41F5BD2-A0FF-4258-9B09-7C0C194601BD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataRepository", "..\DataRepository\DataRepository.csproj", "{CED135C7-C185-4999-821D-40780AB27B99}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D41F5BD2-A0FF-4258-9B09-7C0C194601BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D41F5BD2-A0FF-4258-9B09-7C0C194601BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D41F5BD2-A0FF-4258-9B09-7C0C194601BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D41F5BD2-A0FF-4258-9B09-7C0C194601BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CED135C7-C185-4999-821D-40780AB27B99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CED135C7-C185-4999-821D-40780AB27B99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CED135C7-C185-4999-821D-40780AB27B99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CED135C7-C185-4999-821D-40780AB27B99}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B8BB3E90-E5FF-4971-A1B4-E5C294C44D4D}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://nibs03:8080/tfs/nous
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = TravelDesk.csproj
+		SccLocalPath1 = .
+		SccProjectUniqueName2 = ..\\DataRepository\\DataRepository.csproj
+		SccProjectName2 = ../DataRepository
+		SccLocalPath2 = ..\\DataRepository
+	EndGlobalSection
+EndGlobal

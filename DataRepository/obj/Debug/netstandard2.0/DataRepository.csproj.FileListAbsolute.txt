@@ -1,0 +1,9 @@
+D:\D Drive\New folder\DataRepository\obj\Debug\netstandard2.0\DataRepository.csproj.CoreCompileInputs.cache
+D:\D Drive\New folder\DataRepository\obj\Debug\netstandard2.0\DataRepository.AssemblyInfoInputs.cache
+D:\D Drive\New folder\DataRepository\obj\Debug\netstandard2.0\DataRepository.AssemblyInfo.cs
+D:\D Drive\New folder\DataRepository\bin\Debug\netstandard2.0\DataRepository.deps.json
+D:\D Drive\New folder\DataRepository\bin\Debug\netstandard2.0\DataRepository.dll
+D:\D Drive\New folder\DataRepository\bin\Debug\netstandard2.0\DataRepository.pdb
+D:\D Drive\New folder\DataRepository\obj\Debug\netstandard2.0\DataRepository.dll
+D:\D Drive\New folder\DataRepository\obj\Debug\netstandard2.0\DataRepository.pdb
+D:\D Drive\New folder\DataRepository\obj\Debug\netstandard2.0\DataRepository.csprojAssemblyReference.cache

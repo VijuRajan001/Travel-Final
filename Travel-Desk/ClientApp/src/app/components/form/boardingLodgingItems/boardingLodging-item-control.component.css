@@ -1,0 +1,13 @@
+.flex-grid {
+  display: -webkit-flex;
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.flex-grid .col1 {
+  width: 10%;
+}
+.flex-grid .col2 {
+  width: 90%;
+}

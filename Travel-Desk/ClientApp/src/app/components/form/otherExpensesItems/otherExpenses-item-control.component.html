@@ -1,0 +1,46 @@
+
+<div class="form-group otherExpensesOptions" [formGroup]="otherExpensesItem">
+
+  
+    <mat-form-field>
+        <input matInput [max]="maxDate" placeholder="Date" class="datecontrol" [matDatepicker]="date" (focus)="date.open()" readonly formControlName="date">
+        <mat-icon class="small">date_range</mat-icon>
+        <mat-error *ngIf="otherExpensesItem.get('date').hasError('required')">
+            Date of Arrival is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+    <mat-datepicker #date></mat-datepicker>
+    <mat-form-field>
+        <input matInput placeholder="Nature of Expenses" formControlName="natureOfExpenses" [attr.id]="'natureOfExpenses'+index" required>
+        <mat-error *ngIf="otherExpensesItem.get('natureOfExpenses').hasError('required')">
+            Location is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Currency" formControlName="currency" [attr.id]="'currency'+index">
+        <mat-error *ngIf="otherExpensesItem.get('currency').hasError('required')">
+            Website is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Amount Spent" formControlName="amountSpent" [attr.id]="'amountSpent'+index" required>
+        <mat-error *ngIf="otherExpensesItem.get('amountSpent').hasError('required')">
+            Mobile number is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Supported By Voucher" formControlName="supportByVoucher" [attr.id]="'supportByVoucher'+index" required>
+        <mat-error *ngIf="otherExpensesItem.get('supportByVoucher').hasError('required')">
+            Mobile number is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+    
+      <button mat-icon-button type="button" color="primary" (click)="removed.emit(index)">
+          <mat-icon>remove_circle</mat-icon>
+      </button>
+      <button mat-icon-button type="button" color="primary" (click)="add.emit(index)">
+          <mat-icon>add_circle</mat-icon>
+      </button>
+    
+
+</div>

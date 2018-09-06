@@ -1,0 +1,82 @@
+
+<div class="form-group flightOptions" [formGroup]="item">
+
+    <mat-form-field>
+        <input matInput placeholder="Flight ID" formControlName="flightItemId" [attr.id]="'flightItemId'+index">
+        <mat-error *ngIf="item.get('flightItemId').hasError('required')">
+            Flight ID is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Flight Carrier Name" formControlName="flightName" [attr.id]="'flightName'+index">
+        <mat-error *ngIf="item.get('flightName').hasError('required')">
+            Flight name is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Flight Start" formControlName="flightFrom" [attr.id]="'flightFrom'+index">
+        <mat-error *ngIf="item.get('flightFrom').hasError('required')">
+            Departure is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Flight Destination" formControlName="flightTo" [attr.id]="'flightTo'+index">
+        <mat-error *ngIf="item.get('flightTo').hasError('required')">
+            Arrival is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Flight Layover" formControlName="flightLayover" [attr.id]="'flightLayover'+index">
+        <mat-error *ngIf="item.get('flightLayover').hasError('required')">
+            Arrival is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+  <mat-form-field>
+        <input matInput placeholder="Flight Layover Hours" formControlName="flightLayoverHours" [attr.id]="'flightLayoverHours'+index">
+        <mat-error *ngIf="item.get('flightLayoverHours').hasError('required')">
+            Arrival is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+  <mat-form-field>
+        <input matInput  placeholder="Flight Start Date" class="datecontrol" [matDatepicker]="start_date" (focus)="start_date.open()" readonly formControlName="flightStartDate">
+            <mat-datepicker-toggle matSuffix [for]="start_date"></mat-datepicker-toggle>
+            <mat-datepicker #start_date></mat-datepicker>
+            <mat-error *ngIf="item.get('flightStartDate').hasError('required')">
+              Start date is <strong>required</strong>
+            </mat-error>
+    </mat-form-field>
+  <mat-form-field>
+        <input matInput  placeholder="Flight End Date" class="datecontrol" [matDatepicker]="end_date" (focus)="end_date.open()" readonly formControlName="flightEndDate">
+            <mat-datepicker-toggle matSuffix [for]="end_date"></mat-datepicker-toggle>
+            <mat-datepicker #end_date></mat-datepicker>
+            <mat-error *ngIf="item.get('flightEndDate').hasError('required')">
+              end date is <strong>required</strong>
+            </mat-error>
+    </mat-form-field>
+  <mat-form-field>
+        <input matInput placeholder="Flight Start Time" formControlName="flightStartTime" [attr.id]="'flightStartTime'+index">
+        <mat-error *ngIf="item.get('flightStartTime').hasError('required')">
+            Arrival is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+  <mat-form-field>
+        <input matInput placeholder="Flight End Time" formControlName="flightEndTime" [attr.id]="'flightEndTime'+index">
+        <mat-error *ngIf="item.get('flightEndTime').hasError('required')">
+            Arrival is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Flight Cost" formControlName="flightCost" [attr.id]="'flightCost'+index">
+        <mat-error *ngIf="item.get('flightCost').hasError('required')">
+            Arrival is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+    <button mat-icon-button type="button" color="primary" (click)="removed.emit(index)">
+        <mat-icon>remove_circle</mat-icon>
+    </button>
+    <button mat-icon-button type="button" color="primary" (click)="add.emit(index)">
+        <mat-icon>add_circle</mat-icon>
+    </button>
+
+
+</div>

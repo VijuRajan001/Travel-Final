@@ -1,0 +1,6 @@
+ 
+
+
+    <otherExpenses-item-control *ngFor="let otherExpensesItem of otherExpensesItemsFormArray.controls; let i=index"
+                         [index]="i" [otherExpensesItem]="otherExpensesItem" (removed)="otherExpensesItemsFormArray.removeAt($event)" (add)="addItem($event)">
+    </otherExpenses-item-control>

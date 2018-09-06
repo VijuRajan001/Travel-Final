@@ -1,0 +1,59 @@
+<div id="login-container" class="container-fluid loginlayout">
+    <div class="row">
+        <div id="login-component" class="login-form">
+                <div *ngIf="brandNew" class="alert alert-success" role="alert">
+                        <strong>All set!</strong> Please login with your account
+                    </div>
+            <form #f="ngForm" novalidate (ngSubmit)="login(f)">
+                <mat-card class="example-card">
+
+                   <!-- <mat-card-header>
+
+                        <mat-card-title>
+
+                            <mat-icon svgIcon="logo" class="header"></mat-icon>
+                       
+                        </mat-card-title>
+
+                    </mat-card-header> -->
+
+                    <mat-icon svgIcon="nous-logo" class="login-logo-container"></mat-icon>
+                    <h3 class="line-with-icon">Travel Desk</h3>
+                    <mat-card-content>
+
+
+
+                        <div class="login-container">
+                            <mat-form-field>
+                                <input matInput placeholder="Enter your email" name="email" [ngModel]="credentials.email" #email="ngModel" validateEmail tmFocus>
+                                <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                                <mat-icon matSuffix class="material-icons">person_outline</mat-icon>
+                            </mat-form-field>
+
+                            <mat-form-field>
+                                <input matInput placeholder="Enter your password" name="password" [type]="hide ? 'password' : 'text'" ngModel>
+                                <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+                            </mat-form-field>
+
+                        </div>
+
+                        <div *ngIf="errors" class="alert alert-danger" role="alert">
+                            <strong>Oops!</strong> {{errors}}
+                        </div>
+
+
+
+                    </mat-card-content> 
+
+                    <mat-card-actions>
+                        <div class="login-action-container">
+                            <button mat-raised-button color="primary">LogIn</button>
+
+                        </div>
+                    </mat-card-actions>
+
+                </mat-card>
+            </form>
+        </div>
+     </div>
+</div>
